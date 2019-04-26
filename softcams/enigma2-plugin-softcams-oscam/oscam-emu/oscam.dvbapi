@@ -1,0 +1,8 @@
+# Delay answers that come too fast (e.g. from cache)
+D: 0500 90
+D: 1830 320
+D: 1838 320
+D: 1843 320
+D: 098C 120
+D: 098E 120
+D: 09C4 120
