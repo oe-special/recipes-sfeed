@@ -7,6 +7,8 @@ require softcam.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-doscam:"
 
+RDEPENDS_${PN} += "libusb1"
+
 SRC_URI = " \
             file://doscam_${PV}_* \
             file://${CAMNAME}/* \
@@ -15,6 +17,8 @@ SRC_URI = " \
 INHIBIT_PACKAGE_STRIP = "1"
 
 CONFFILES_${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
+
+PACKAGE_ARCH = "${DEFAULTTUNE}"
 
 do_configure_prepend () {
         cp ${WORKDIR}/init.doscam ${S}/init.${CAMNAME}
