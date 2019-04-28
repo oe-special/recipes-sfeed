@@ -25,5 +25,4 @@ do_install() {
     install -m 0755 ${WORKDIR}/CCcam.cfg ${D}/etc/CCcam.cfg
 }
 
-INSANE_SKIP_${PN}_aarch64 += "file-rdeps arch"
-
+INSANE_SKIP_${PN} += "already-stripped file-rdeps arch"
