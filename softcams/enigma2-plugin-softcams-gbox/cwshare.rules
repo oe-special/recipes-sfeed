@@ -1,0 +1,29 @@
+####################################################################
+# [GSC] share rules
+# AX - id
+# BX - provider
+#
+#policies:
+# D - deny
+# A - accept
+# <policy>: { B0B1B2B3 }
+# <policy>: { A0A1 }
+# <policy>: { A0A1 B0B1B2B3 }
+# allow wildcard like ?
+# <policy>: { A0?? }
+# <policy>: { B?B1B2B3 }
+#example:
+# drop all entries with provider 18300000
+# D: { 18300000 } 
+# drop all entries with id 1234
+# D: { 1234 }
+# drop entry with provider 01000080 and id 1234
+# D: { 1234 01000080 }
+#cascaded:
+# drop all entries with provider 18300000 except with id 1234
+# D: { 18300000 }
+# A: { 1234 18300000 }
+# Diese Option ist sehr Hielfreich für Clientboxen.
+# Hier könnt ihr genau eure Karten definieren die ihr auch wirklich haben möchtet.
+# Diese Option könnt ihr zwar auch für die Serverboxen nehmen ,Nachteil dabei ist aber das ihr dann eure Sharepartner beschneidet.
+

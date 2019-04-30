@@ -1,0 +1,15 @@
+####################################################################
+# [CAS] Conax Boxkey/Camkey
+# UA - card unique address (5 byte)
+# BX - boxkey (4 byte)
+#
+# B: { UA UA UA UA UA 03 02 02 00 { B0 B1 B2 B3 }} |-- 64 byte rsa mod --|
+#
+# [CAS] Conax Pin
+# UA - card unique address (5 byte)
+# CX - pin (4 byte) ascii based (eg. 31 32 33 34 for pin 1234)
+#
+# P: { UA UA UA UA UA { C0 C1 C2 C3 }}
+#
+#
+

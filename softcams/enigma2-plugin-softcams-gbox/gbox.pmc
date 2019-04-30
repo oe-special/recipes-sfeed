@@ -1,0 +1,29 @@
+# Mit dieser Funktion wird eure Karte bevorzug behandelt. Die SID's solltet ihr auf den neusten Stand
+# bringen falls sie nicht stimmen sollten.  
+
+; [section]
+; sids=	- list of service ids
+; tsid= -
+; onid= -
+; namespace= -
+; cas=true|false - route ecm request to local card pool
+; emu=true|false - route ecm request to local emu core
+; net=true|false - route ecm request to global card pool (cwshare)
+
+;[SkyDE]
+;sids= 0008,0009,000A,000B,000C,000D,000E,0010,0011,0013,0014,0015,0016,0017,0019,001A,001B,001C,001D,0021,0022,0023,0024,0025,0026,0027,0029,002A,002B,0032,0034,0038,0039,0065,0066,0069,006A,006B,006C,006D,006E,006F,0070,0071,0073,0074,0075,0076,0077,007A,007B,007C,007D,007E,007F,0080,0082,0083,0084,0086,0087,0088,0089,008A,008C,00A8,00DF,00F2,0106,010B,0110,0115,011A,011F,0124,0129,0191,0193,0194,0201,0203,0204,0206
+;cas = true
+;emu = false
+;net = false
+
+;[KDG]
+;sids= C351,C352,C353,C354,C355,C356,C357,C358,C35C,C36C,C361,C362,C364,C366,C367,C368,C36F,C370,C371,C373,C378,C37D,C37F,C382,C383,C384,C387,C38B,C3B8,C3B9,C3BA,C3BB,C3BC,C3BF,C47D,C47F,C480,C481,C482,C483,C610,C613,C614,C615,C617,C618,C619,CF0B,CF70,CF73,D035,D036,D03E,D099,D09C,D0A1,D0A2,D0A3,D0A4,D0A5,D16B
+;cas = true
+;emu = false
+;net = false
+
+;[HD+]
+;sids= 5273,5274,126E,126F,157C,157F,1581,2774,2777,2EAF,2E9B,30D4,EF10,EF11,EF12,EF13,EF14,EF15,EF74,EF75,EF76,EF77,EF78
+;cas = true
+;emu = false
+;net = false

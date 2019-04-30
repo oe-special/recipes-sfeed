@@ -95,7 +95,7 @@ pkg_prerm_${PN}_prepend () {
 	if [ "${OLDLINK}" == "$D${CAMPATH}" -a -f $D${CAMLINK}.None ]
 	then
 		echo "${CAMNAME} was selected, now selecting None as softcam"
-		rm -f "${D]${CAMLINK}"
+		rm -f "$D${CAMLINK}"
 		ln -s "softcam.None" "$D${CAMLINK}"
 	fi
 	exit 0

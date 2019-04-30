@@ -1,0 +1,52 @@
+####################################################################
+# [CAS] Viaccess Boxkey/Camkey
+# UA - card unique address (5 byte)
+# KN - key nr. (00,01,...0C,0D,0E,0F)
+# EX - key data (16 byte)
+#
+# set surencryption aes key
+# C: { UA UA UA UA UA KN { E0 E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF }}
+#
+
+####################################################################
+# [CAS] Viaccess Pin (disable pin after init)
+# UA - card unique address (5 byte)
+# CX - pin (4 byte) ascii based (eg. 30 31 32 33 for pin 1234)
+#
+# P: { UA UA UA UA UA { C0 C1 C2 C3 }}
+#
+#
+
+####################################################################
+# [EMU] Viaccess 1/2 ECM keyset
+# ID - ident, like provider id
+# PR - provider id
+# KN - key nr.
+# EX - key data (16 byte)
+#
+# Viaccess 1/2
+# 
+# set master key
+#
+# M: { ID ID ID 00 PR PR PR 00 KN { E0 E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF }}
+#
+# Viaccess 1
+#
+# set operation key
+#
+#    Provider Nr.  Key------------------->
+# ------------------------------------------
+# V: { PR PR PR KN { E0 E1 E2 E3 E4 E5 E6 E7 }}
+#
+# Viaccess 2
+# 
+# set keyset
+#    PIovider-> DES--------------------->	XOR---------------------> Perm--------------------> Chain-----------------------> Transformtable----------------->
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# W: { PR PR PR { D0 D1 D2 D3 D4 D5 D6 D7 { X0 X1 X2 X3 X4 X5 X6 X7 { P0 P1 P2 P3 P4 P5 P6 P7 { C0 C1 C2 C3 C4 C5 C6 C7 }}}}} |--- 256 byte tranformation table ---| 
+# 
+# set operation key
+#
+# W: { PR PR PR KN { E0 E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF }}
+#
+#

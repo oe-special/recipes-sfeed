@@ -1,0 +1,31 @@
+####################################################################
+# [CAS] Irdeto Boxkey/Camkey
+# UA - card unique address (3 byte)
+# BX - boxkey (4 byte)
+# CX - camkey (8 byte)
+# DX - camkey message (64 byte)
+#
+# C: { UA UA UA { C0 C1 C2 C3 C4 C5 C6 C7 }} |--- 64 byte camkey message ---|
+# B: { UA UA UA { B0 B1 B2 B3 }} 
+#
+#
+
+
+####################################################################
+# [EMU] Irdeto1/2 ECM keyset
+# ID - system id (eg. 1101,4101,...)
+# PR - provider
+# KS - key set (eg. 91,02)
+#	91 - Ecmkey
+#	92 - Emmkey
+#	02 - Opkey
+# KN - key number (eg. 01,02,03,...)
+#	if KS=91 or KS=92 then
+#		02 - IV
+#		03 - Seed
+# 
+# I2 ECM Key (16 byte)
+# I: { ID ID PR KS KN { 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F }}
+#
+#
+
