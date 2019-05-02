@@ -85,6 +85,7 @@ status)
 			exit 1
 		fi
 	fi
+	;;
 version)
 	$CAM -V | grep 'Version\|IPv6' | sed 's/Version:[ ]*//' | sed 's/IPv6.*yes/with IPv6/g' | sed 's/IPv6.*no/IPv4-only/g' | sed ':a;N;$!ba;s/\n/ /g'
 	;;

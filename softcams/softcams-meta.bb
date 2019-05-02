@@ -4,6 +4,8 @@ require conf/license/license-gplv2.inc
 
 PROVIDES = "openatv-softcams"
 
+DEPENDS = "enigma2-plugin-extensions-oscamsmartcard"
+
 SOFTCAMS = "\
 	enigma2-plugin-softcams-oscam-smod \
 	enigma2-plugin-softcams-oscam-smod-ipv4only \
@@ -26,7 +28,7 @@ SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-gbox"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-mgcamd"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-cccam"
 
-DEPENDS = "\
+DEPENDS += "\
 	${SOFTCAMS} \
 "
 

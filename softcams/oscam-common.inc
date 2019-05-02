@@ -3,6 +3,8 @@
 require softcam.inc
 inherit cmake
 
+PR="r1"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-oscam:"
 
 SRC_URI += " \
