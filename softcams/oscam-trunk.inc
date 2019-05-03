@@ -14,6 +14,5 @@ require oscam-common.inc
 
 PV = "1.20+svn${SRCPV}"
 SRCREV = "${AUTOREV}"
-PR = "r0"
 
 S = "${WORKDIR}/trunk"

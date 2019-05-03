@@ -3,7 +3,7 @@
 require softcam.inc
 inherit cmake
 
-PR="r1"
+PR="r2"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-oscam:"
 
@@ -41,7 +41,7 @@ do_install () {
 	install -d ${D}/${bindir}
 	install -m 0755 ${WORKDIR}/build/oscam ${D}/usr/bin/${CAMNAME}
 	install -d ${D}/${sysconfdir}/tuxbox/config/${CAMNAME}
-	[[ -e ${S}/../${CAMNAME} ]] && install 777 ${S}/../${CAMNAME}/* ${D}/${sysconfdir}/tuxbox/config/${CAMNAME} 2>/dev/null || true
+	[[ -e ${S}/../${CAMNAME} ]] && install 644 ${S}/../${CAMNAME}/* ${D}/${sysconfdir}/tuxbox/config/${CAMNAME} 2>/dev/null || true
 	[[ -e ${D}/${sysconfdir}/tuxbox/config/${CAMNAME}/Sample.configs ]] && rm ${D}/${sysconfdir}/tuxbox/config/${CAMNAME}/Sample.configs 2>/dev/null || true
 }
 
