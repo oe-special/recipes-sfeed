@@ -3,7 +3,7 @@
 require softcam.inc
 inherit cmake
 
-PR="r2"
+#PR="r2"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-oscam:"
 
@@ -35,6 +35,7 @@ EXTRA_OECMAKE += "\
 
 do_configure_prepend () {
 	cp ${S}/../init.oscam-generic ${S}/init.${CAMNAME}
+	perl -i -pe 's:DEFAULT_HTTP_PORT[ \t]*?8888:DEFAULT_HTTP_PORT 83:g' ${S}/oscam-config-global.c
 }
 
 do_install () {

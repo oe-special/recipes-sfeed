@@ -28,7 +28,6 @@ F = "${WORKDIR}/git/files"
 
 do_configure_prepend() {
 	cp ${F}/SoftCam.Key ${S}/SoftCam.Key
-	perl -i -pe 's:Schimmelreiter:smod:g' ${S}/globals.h
 	perl -i -pe 's:Schimmelreiter:oe-alliance:g' ${S}/webif/status/status.html
 }
 
