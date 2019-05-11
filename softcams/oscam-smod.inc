@@ -20,11 +20,19 @@ inherit gitpkgv
 
 SRCREV = "${AUTOREV}"
 
+SMODSVN := ""
+
 PV = "1.20+git${SRCPV}"
 PKGV = "1.20+git${GITPKGV}"
 
 S = "${WORKDIR}/git"
 F = "${WORKDIR}/git/files"
+
+python do_get_smodsvn () {
+    src = d.getVar('S')
+    f = open(src + "/.trunk-svn", "r")
+    d.setVar('SMODSVN',f.readline())
+}
 
 do_configure_prepend() {
 	cp ${F}/SoftCam.Key ${S}/SoftCam.Key
@@ -42,3 +50,5 @@ do_compile_prepend() {
 
 	LDFLAGS="${LDFLAGS} -Wl,--format=binary -Wl,SoftCam.Key -Wl,--format=default"
 }
+
+addtask get_smodsvn after do_unpack before do_patch
