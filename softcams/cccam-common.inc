@@ -5,14 +5,14 @@ require conf/license/license-close.inc
 
 require softcam.inc
 
+PR = "r0-de"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-cccam:"
 
 SRC_URI = " \
             file://CCcam_${PV}_* \
             file://CCcam.cfg \
 "
-
-INHIBIT_PACKAGE_STRIP = "1"
 
 CONFFILES_${PN} ?= "/etc/CCcam.cfg"
 
@@ -26,3 +26,4 @@ do_install() {
 }
 
 INSANE_SKIP_${PN} += "already-stripped file-rdeps arch"
+INHIBIT_PACKAGE_STRIP = "1"

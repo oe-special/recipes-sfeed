@@ -51,4 +51,4 @@ do_compile_prepend() {
 	LDFLAGS="${LDFLAGS} -Wl,--format=binary -Wl,SoftCam.Key -Wl,--format=default"
 }
 
-addtask get_smodsvn after do_unpack before do_patch
+#addtask get_smodsvn after do_unpack before do_patch
