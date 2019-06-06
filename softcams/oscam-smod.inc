@@ -28,6 +28,11 @@ PKGV = "1.20+git${GITPKGV}"
 S = "${WORKDIR}/git"
 F = "${WORKDIR}/git/files"
 
+RPROVIDES_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+RREPLACES_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+RCONFLICTS_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+
+
 python do_get_smodsvn () {
     src = d.getVar('S')
     f = open(src + "/.trunk-svn", "r")

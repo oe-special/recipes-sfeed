@@ -21,6 +21,8 @@ CAMPATH = "/etc/init.d/softcam.${CAMNAME}"
 CAMSTART ?= "exec start-stop-daemon -S -x /usr/bin/${CAMNAME}"
 CAMSTOP  ?= "exec start-stop-daemon -K -R 2 -x /usr/bin/${CAMNAME}"
 
+#RRECOMMENDS_${PN} += "softcam-feed-universal"
+
 # Generate a simplistic standard init script
 # (sorry for the sleep 1, but start-stop-daemon -R does not work as advertised)
 do_compile_append () {
@@ -101,4 +103,4 @@ pkg_prerm_${PN}_prepend () {
 	exit 0
 }
 
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP_${PN} += "already-stripped build-deps"

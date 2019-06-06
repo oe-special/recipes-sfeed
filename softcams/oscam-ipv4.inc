@@ -4,6 +4,6 @@ EXTRA_OECMAKE += "\
 
 DESCRIPTION += "Note: You should never need this IPv4-ONLY version!"
 
-RPROVIDES_${PN}  = "${CAMNAME}-ipv4"
-RREPLACES_${PN}  = "${CAMNAME}"
-RCONFLICTS_${PN} = "${CAMNAME}"
+RPROVIDES_${PN}  += "${CAMNAME}-ipv4"
+RREPLACES_${PN}  += "${CAMNAME}"
+RCONFLICTS_${PN} += "${CAMNAME}"

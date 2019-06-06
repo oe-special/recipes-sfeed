@@ -16,3 +16,7 @@ PV = "1.20+svn${SRCPV}"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/trunk"
+
+RPROVIDES_${PN} += "enigma2-plugin-softcams-oscam-atv"
+RREPLACES_${PN} += "enigma2-plugin-softcams-oscam-atv"
+RCONFLICTS_${PN} += "enigma2-plugin-softcams-oscam-atv"
