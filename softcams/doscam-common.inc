@@ -1,5 +1,5 @@
 # Stuff applying to all doscams on image
-SUMMARY = "doscam ${PV} softcam"
+SUMMARY_${PN} = "doscam ${PV} softcam"
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 

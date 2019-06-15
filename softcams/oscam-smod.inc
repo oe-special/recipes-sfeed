@@ -1,9 +1,9 @@
 MAINTAINER = "smod"
-SUMMARY = "OScam - Open Source Softcam - smod ${PV}"
-DESCRIPTION = "Combining the benefits of\n \
+SUMMARY_${PN} = "OSCam-smod ${PKGV}"
+DESCRIPTION_${PN} = "Combining the benefits of\n \
 - latest trunk\n \
 - modern interface\n \
-- emu support\n \
+- emu support \
 "
 
 SRC_URI="git://github.com/oe-alliance/oscam-smod.git;protocol=git"

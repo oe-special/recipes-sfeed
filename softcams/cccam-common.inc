@@ -1,5 +1,8 @@
 # Stuff applying to all CCcams on image
-SUMMARY = "CCcam ${PV} softcam"
+SUMMARY_${PN} = "CCcam ${PV} softcam"
+DESCRIPTION_${PN} = "An outdated binary only softcam\n \
+"
+
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
@@ -27,3 +30,7 @@ do_install() {
 
 INSANE_SKIP_${PN} += "already-stripped file-rdeps arch"
 INHIBIT_PACKAGE_STRIP = "1"
+
+RPROVIDES_${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"
+RREPLACES_${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"
+RCONFLICTS_${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"

@@ -13,6 +13,8 @@ SOFTCAMS = "\
 	enigma2-plugin-softcams-oscam-emu-ipv4only \
 	enigma2-plugin-softcams-oscam-trunk \
 	enigma2-plugin-softcams-oscam-trunk-ipv4only \
+	enigma2-plugin-softcams-oscam-stable \
+	enigma2-plugin-softcams-oscam-stable-ipv4only \
 	\
 	enigma2-plugin-softcams-ncam \
 	enigma2-plugin-softcams-ncam-ipv4only \

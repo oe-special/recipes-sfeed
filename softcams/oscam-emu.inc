@@ -1,6 +1,7 @@
 MAINTAINER = "oscam-emu"
-SUMMARY = "OScam - Open Source Softcam - oscam-emu ${PV}"
-DESCRIPTION = "with emu support\n"
+SUMMARY_${PN} = "OSCam-emu ${PKGV}"
+DESCRIPTION_${PN} = "OSCam Open Source Softcam\n \
+- with emu support"
 
 SRC_URI="git://github.com/oscam-emu/oscam-patched.git;protocol=git"
 

@@ -1,5 +1,5 @@
 # Stuff applying to all gbox on image
-SUMMARY = "gbox.net ${PV} softcam"
+SUMMARY_${PN} = "gbox.net ${PV} softcam"
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
