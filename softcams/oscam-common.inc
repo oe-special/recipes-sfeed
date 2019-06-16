@@ -3,8 +3,6 @@
 require softcam.inc
 inherit cmake
 
-#PR="r2"
-
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-oscam:"
 
 SRC_URI += " \
@@ -20,13 +18,15 @@ CONFFILES_${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
 
-DEPENDS = "libusb openssl"
+DEPENDS += "libusb openssl"
 
 EXTRA_OECMAKE += "\
 	-DWEBIF=1 \
 	-DWEBIF_LIVELOG=1 \
 	-DWEBIF_JQUERY=1 \
 	-DTOUCH=1 \
+	-DLCDSUPPORT=1 \
+	-DLEDSUPPORT=1 \
 	-DWITH_SSL=1 \
 	-DWITH_STAPI=0 \
 	-DHAVE_LIBUSB=1 \

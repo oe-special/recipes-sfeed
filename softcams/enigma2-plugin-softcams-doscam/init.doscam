@@ -11,9 +11,12 @@
 # Description:       doscam SoftCAM, card reader and server.
 ### END INIT INFO
 
-readlink $0 > /dev/null 2>&1 && CAM=$(basename $(readlink $0) | sed s#^softcam\.##)
-
-[ -z "$CAM" ] && CAM=$(basename $0 | sed s#^softcam\.##)
+readlink -f $0 >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+        CAM=$(basename $(readlink -f $0) | sed s#^softcam\.##)
+else
+        CAM=$(basename $0 | sed s#^softcam\.##)
+fi
 
 [ -n "$CAM" ] || exit 1
 [ -x /usr/bin/$CAM ] || exit 1

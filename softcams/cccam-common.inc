@@ -1,5 +1,5 @@
 # Stuff applying to all CCcams on image
-SUMMARY_${PN} = "CCcam ${PV} softcam"
+SUMMARY_${PN} = "CCcam ${PKGV}"
 DESCRIPTION_${PN} = "An outdated binary only softcam\n \
 "
 

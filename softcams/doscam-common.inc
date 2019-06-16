@@ -3,6 +3,8 @@ SUMMARY_${PN} = "doscam ${PV} softcam"
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
+PR = "r1"
+
 require softcam.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-doscam:"

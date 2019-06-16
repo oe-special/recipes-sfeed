@@ -3,7 +3,7 @@
 require softcam.inc
 inherit cmake
 
-PR="r0"
+PR="r1"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-ncam:"
 

@@ -11,9 +11,8 @@
 # Description:       mgcamd SoftCAM, card reader and server.
 ### END INIT INFO
 
-readlink $0 > /dev/null 2>&1 && CAM=$(basename $(readlink $0) | sed s#^softcam\.##)
 CAMNAME="MGCamd"
-CAM=mgcamd
+CAM="mgcamd"
 
 [ -x /usr/bin/$CAM ] || exit 1
 
@@ -21,9 +20,9 @@ remove_tmp () {
 	rm -rf /tmp/*.info* /tmp/*.tmp*
 }
 
-PIDFILE=/var/tmp/${CAM}.pid
 DESC="Softcam service $CAMNAME"
-DAEMON=/usr/bin/$CAM
+PIDFILE=/var/tmp/${CAM}.pid
+DAEMON=/usr/bin/${CAM}
 
 case "$1" in
 start)
