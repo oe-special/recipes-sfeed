@@ -11,8 +11,19 @@
 # Description:       mgcamd SoftCAM, card reader and server.
 ### END INIT INFO
 
-CAMNAME="MGCamd"
-CAM="mgcamd"
+ONBOOT=0
+[ "x$0" = "x/etc/rcS.d/S95softcam" -o "x$0" = "x/etc/rcS.d/S90cardserver" ] && ONBOOT=1
+if [ $ONBOOT -eq 1 ]; then
+	nohup $(sleep 10 && /etc/init.d/softcam start) &
+	exit 0
+fi
+
+readlink -f $0 >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+	CAM=$(basename $(readlink -f $0) | sed s#^softcam\.##)
+else
+	CAM=$(basename $0 | sed s#^softcam\.##)
+fi
 
 [ -x /usr/bin/$CAM ] || exit 1
 
@@ -20,7 +31,7 @@ remove_tmp () {
 	rm -rf /tmp/*.info* /tmp/*.tmp*
 }
 
-DESC="Softcam service $CAMNAME"
+DESC="Softcam service $CAM"
 PIDFILE=/var/tmp/${CAM}.pid
 DAEMON=/usr/bin/${CAM}
 
@@ -81,10 +92,10 @@ status)
 	fi
 	;;
 version)
-	echo $CAMNAME
+	echo $CAM
 	;;
 info)
-	echo $CAMNAME
+	echo $CAM
 	;;
 *)
 	echo "Usage: $0 start|stop|restart|status|version|info"
@@ -92,3 +103,4 @@ info)
 	;;
 esac
 exit 0
+

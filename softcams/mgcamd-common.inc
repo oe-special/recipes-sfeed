@@ -19,7 +19,7 @@ CAM_ARCH="arm"
 CAM_ARCH_mipsel="mips32el"
 CAM_ARCH_sh4="sh4"
 
-PR="r1"
+PR="r3"
 
 do_configure() {
     cp ${S}/../init.mgcamd ${S}/init.${CAMNAME}
