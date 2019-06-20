@@ -1,7 +1,6 @@
 # Stuff applying to all CCcams on image
 SUMMARY_${PN} = "CCcam ${PKGV}"
-DESCRIPTION_${PN} = "An outdated binary only softcam\n \
-"
+DESCRIPTION_${PN} = "An outdated binary only softcam"
 
 LICENSE = "CLOSED"
 require conf/license/license-close.inc

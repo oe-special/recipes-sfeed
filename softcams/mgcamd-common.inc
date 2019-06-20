@@ -1,5 +1,7 @@
 # Stuff applying to all mgcamd on image
-SUMMARY = "mgcamd ${PV} softcam"
+SUMMARY_${PN} = "mgcamd ${PKGV}"
+DESCRIPTION_${PN} = "An outdated binary only softcam"
+
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 

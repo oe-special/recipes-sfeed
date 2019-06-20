@@ -1,5 +1,7 @@
 # Stuff applying to all gbox on image
-SUMMARY_${PN} = "gbox.net ${PV} softcam"
+SUMMARY_${PN} = "gbox.net ${PKGV}"
+DESCRIPTION_${PN} = "A binary only softcam"
+
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
