@@ -30,10 +30,7 @@ do_install() {
     install -m 0644 ${WORKDIR}/CCcam.xml ${D}/etc/ppanels/CCcam.xml
 }
 
-ASSUME_SHLIBS_aarch64 += "libc.so.6:lib32-glibc"
-ASSUME_SHLIBS_aarch64 += "libpthread.so.0:lib32-glibc"
-ASSUME_SHLIBS_aarch64 += "libstdc++.so.6:lib32-libstdc++"
-ASSUME_SHLIBS_aarch64 += "libcrypt.so.1:lib32-libxcrypt"
+RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libstdc++ lib32-libxcrypt softcam-support"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INSANE_SKIP_${PN} = "already-stripped build-deps"

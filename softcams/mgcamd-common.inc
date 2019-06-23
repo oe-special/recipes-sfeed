@@ -2,10 +2,12 @@
 SUMMARY_${PN} = "mgcamd ${PKGV}"
 DESCRIPTION_${PN} = "An outdated binary only softcam"
 
+PR="r4.0"
+
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
-
 require softcam.inc
+require softcam-binary-32bit.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-mgcamd:"
 
@@ -21,14 +23,10 @@ CAM_ARCH="arm"
 CAM_ARCH_mipsel="mips32el"
 CAM_ARCH_sh4="sh4"
 
-PR="r4"
-
-do_configure() {
-    cp ${S}/../init.mgcamd ${S}/init.${CAMNAME}
-}
-
 do_install() {
+    install -d ${D}/etc/init.d
     install -d ${D}/usr/bin
+    install -m 0755 ${S}/../init.mgcamd ${D}/etc/init.d/init.${CAMNAME}
     install -m 0755 ${S}/../mgcamd_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
 }
 
@@ -38,6 +36,8 @@ pkg_postinst_${PN}_prepend () {
 	fi
 }
 
-INSANE_SKIP_${PN} += "already-stripped file-rdeps arch ldflags build-deps"
+RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libxcrypt lib32-libcrypto1.0.0 lib32-libgcc lib32-zlib softcam-support"
+
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INSANE_SKIP_${PN} += "already-stripped arch build-deps ldflags file-rdeps"

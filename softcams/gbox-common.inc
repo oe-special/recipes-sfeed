@@ -2,10 +2,12 @@
 SUMMARY_${PN} = "gbox.net ${PKGV}"
 DESCRIPTION_${PN} = "A binary only softcam"
 
+PR = "r4.1"
+
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
-
 require softcam.inc
+require softcam-binary-32bit.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-gbox:"
 
@@ -33,24 +35,18 @@ SRC_URI = " \
             file://via \
 "
 
-INHIBIT_PACKAGE_STRIP = "1"
-
 FILES_${PN} += "/var/keys /tmp"
 CONFFILES_${PN} = "/var/keys"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
-
 CAM_ARCH="arm"
 CAM_ARCH_sh4="sh4"
 CAM_ARCH_mipsel="mips32el"
 
-
-do_configure_append() {
-    cp ${S}/../init.gbox ${S}/init.${CAMNAME}
-}
-
 do_install() {
+    install -d ${D}/etc/init.d
     install -d ${D}/usr/bin
+    install -m 0755 ${S}/../init.gbox ${D}/etc/init.d/init.${CAMNAME}
     install -m 0755 ${WORKDIR}/gbox_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
     if [ "x${CAM_ARCH}" == "xarm" ]; then
         install -d ${D}/tmp
@@ -73,5 +69,8 @@ pkg_postinst_${PN}_prepend () {
 	fi
 }
 
-INSANE_SKIP_${PN} += "already-stripped file-rdeps arch"
+RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libgcc softcam-support"
 
+INHIBIT_PACKAGE_STRIP = "1"
+INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP_${PN}_aarch64 += "already-stripped arch"
