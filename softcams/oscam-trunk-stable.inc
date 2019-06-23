@@ -9,4 +9,4 @@ SRC_URI += " \
             file://sogno_unibox_dvbapi-11518_boxtype_sogno_version.patch \
 "
 
-PR = "r2"
+PR = "r3"

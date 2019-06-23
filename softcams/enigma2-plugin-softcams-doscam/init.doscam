@@ -13,9 +13,9 @@
 
 readlink -f $0 >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-        CAM=$(basename $(readlink -f $0) | sed s#^softcam\.##)
+	CAM=$(basename $(readlink -f $0) | sed s#^softcam\.##)
 else
-        CAM=$(basename $0 | sed s#^softcam\.##)
+	CAM=$(basename $0 | sed s#^softcam\.##)
 fi
 
 [ -n "$CAM" ] || exit 1
@@ -75,11 +75,11 @@ status)
 		if [ -d ${PIDDIR} ] && [[ $(readlink -f ${PIDDIR}/exe) == $DAEMON ]]; then
 			echo "Running."
 			exit 0
-		else
-			echo "Stopped."
-			exit 1
 		fi
 	fi
+	echo "Stopped."
+	exit 1
+	;;
 version)
 	$CAM -V | grep 'Version' | sed 's/Version:[ ]*//' | sed ':a;N;$!ba;s/\n/ /g'
 	;;

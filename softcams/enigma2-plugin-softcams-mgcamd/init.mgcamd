@@ -86,10 +86,9 @@ status)
 			echo "Running."
 			exit 0
 		fi
-	else
-		echo "Stopped."
-		exit 1
 	fi
+	echo "Stopped."
+	exit 1
 	;;
 version)
 	echo $CAM
