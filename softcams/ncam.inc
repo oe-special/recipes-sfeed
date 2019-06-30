@@ -20,6 +20,6 @@ SRCREV = "${AUTOREV}"
 
 PV = "10.2+git${SRCPV}"
 PKGV = "10.2+git${GITPKGV}"
-PR="r1"
+PR = "r0"
 
 S = "${WORKDIR}/git"

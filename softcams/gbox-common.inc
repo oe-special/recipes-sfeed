@@ -72,5 +72,5 @@ pkg_postinst_${PN}_prepend () {
 RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libgcc softcam-support"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} += "already-stripped"
-INSANE_SKIP_${PN}_aarch64 += "already-stripped arch"
+INSANE_SKIP_${PN} += "already-stripped ldflags"
+INSANE_SKIP_${PN}_aarch64 += "already-stripped arch ldflags"

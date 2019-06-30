@@ -6,8 +6,6 @@ PR = "r1-de"
 
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
-require softcam.inc
-require softcam-binary-32bit.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-cccam:"
 
@@ -16,6 +14,9 @@ SRC_URI = " \
             file://CCcam.cfg \
             file://CCcam.xml \
 "
+
+require softcam.inc
+require softcam-binary-32bit.inc
 
 CONFFILES_${PN} ?= "/etc/CCcam.cfg /etc/ppanels/CCcam.xml"
 
@@ -30,11 +31,14 @@ do_install() {
     install -m 0644 ${WORKDIR}/CCcam.xml ${D}/etc/ppanels/CCcam.xml
 }
 
-RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libstdc++ lib32-libxcrypt softcam-support"
+RDEPENDS_${PN} = "glibc libstdc++ softcam-support"
+RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libstdc++ softcam-support"
+
+# libxcrypt
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} = "already-stripped build-deps"
-INSANE_SKIP_${PN}_aarch64 = "already-stripped arch build-deps"
+INSANE_SKIP_${PN} = "already-stripped build-deps file-rdeps"
+INSANE_SKIP_${PN}_aarch64 = "already-stripped arch build-deps file-rdeps"
 
 RPROVIDES_${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"
 RREPLACES_${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"

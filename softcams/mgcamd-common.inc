@@ -6,8 +6,6 @@ PR="r4.0"
 
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
-require softcam.inc
-require softcam-binary-32bit.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-mgcamd:"
 
@@ -16,6 +14,9 @@ SRC_URI = " \
             file://init.mgcamd \
 "
 
+require softcam.inc
+require softcam-binary-32bit.inc
+
 #CONFFILES_${PN} ?= "/etc/CCcam.cfg"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
@@ -23,10 +24,13 @@ CAM_ARCH="arm"
 CAM_ARCH_mipsel="mips32el"
 CAM_ARCH_sh4="sh4"
 
+do_compile_prepend() {
+    cp ${WORKDIR}/init.${CAMNAME} ${S}/init.${CAMNAME}
+}
+
 do_install() {
-    install -d ${D}/etc/init.d
+    cp ${S}/../init.mgcamd ${S}/init.mgcamd
     install -d ${D}/usr/bin
-    install -m 0755 ${S}/../init.mgcamd ${D}/etc/init.d/init.${CAMNAME}
     install -m 0755 ${S}/../mgcamd_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
 }
 

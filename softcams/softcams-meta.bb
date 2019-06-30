@@ -21,16 +21,21 @@ SOFTCAMS = "\
 	\
         enigma2-plugin-softcams-gbox \
 	\
+        enigma2-plugin-softcams-wicardd \
+	\
         enigma2-plugin-softcams-mgcamd \
 	\
         enigma2-plugin-softcams-cccam \
         \
         ${@bb.utils.contains("TARGET_ARCH", "mipsel", "enigma2-plugin-softcams-doscam", "", d)} \
         ${@bb.utils.contains("DEFAULTTUNE", "cortexa9hf-neon", "enigma2-plugin-softcams-doscam", "", d)} \
+        \
+        ${@bb.utils.contains("TARGET_ARCH", "mipsel", "enigma2-plugin-softcams-scam", "", d)} \
 "
 
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-gbox"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-mgcamd"
+SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-wicardd"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-cccam"
 
 DEPENDS += "\

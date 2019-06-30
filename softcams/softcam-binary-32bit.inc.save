@@ -15,7 +15,6 @@ ASSUME_SHLIBS_aarch64 += "librt.so.1:lib32-glibc"
 ASSUME_SHLIBS_aarch64 += "libm.so.6:lib32-glibc"
 
 # Learned from wicardd
-# RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libgcc"
 ASSUME_SHLIBS_aarch64 += "libdl.so.2:lib32-glibc"
 
 # Heuristics
