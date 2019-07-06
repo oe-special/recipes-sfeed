@@ -42,6 +42,7 @@ python do_get_smodsvn () {
 
 do_configure_prepend() {
 	cp ${F}/SoftCam.Key ${S}/SoftCam.Key
+	[[ -e ${S}/../SoftCam.Key ]] && cp ${S}/../SoftCam.Key ${S}/SoftCam.Key
 	perl -i -pe 's:Schimmelreiter:oe-alliance:g' ${S}/webif/status/status.html
 }
 
