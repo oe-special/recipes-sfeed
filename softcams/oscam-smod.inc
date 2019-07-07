@@ -41,8 +41,9 @@ python do_get_smodsvn () {
 }
 
 do_configure_prepend() {
-	cp ${F}/SoftCam.Key ${S}/SoftCam.Key
-	[[ -e ${S}/../SoftCam.Key ]] && cp ${S}/../SoftCam.Key ${S}/SoftCam.Key
+	mkdir -p ${S}/../${CAMNAME} 2>/dev/null || true
+	cp ${F}/SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
+	[[ -e ${S}/../SoftCam.Key ]] && cp ${S}/../SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
 	perl -i -pe 's:Schimmelreiter:oe-alliance:g' ${S}/webif/status/status.html
 }
 
@@ -55,7 +56,7 @@ do_compile_prepend() {
 	perl -i -pe 's:(OFS\(dvbapi_read_sdt\)[ \t]*?,[ \t]*?)0\),:${1}1\),:g' ${S}/oscam-config-global.c
 	perl -i -pe 's:(OFS\(http_hide_idle_clients\)[ \t]*?,[ \t]*?)1\),:${1}0\),:g' ${S}/oscam-config-global.c
 
-	LDFLAGS="${LDFLAGS} -Wl,--format=binary -Wl,SoftCam.Key -Wl,--format=default"
+	#LDFLAGS="${LDFLAGS} -Wl,--format=binary -Wl,SoftCam.Key -Wl,--format=default"
 }
 
 #addtask get_smodsvn after do_unpack before do_patch
