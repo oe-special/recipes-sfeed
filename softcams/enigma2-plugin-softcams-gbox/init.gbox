@@ -1,37 +1,26 @@
 #!/bin/sh
-
-CAMNAME="gbox 811.K"
-BINARY="gbox"
-
-
-remove_tmp () {
-	rm -rf /tmp/cainfo.* /tmp/camd.* /tmp/sc.* /tmp/*.info*
-	rm -rf /tmp/gbox*
-}
-
 case "$1" in
-	start)
-		echo "[SCRIPT] $1: $CAMNAME"
-		remove_tmp
-		touch /tmp/.emu.info
-		echo "gbox 811.K" > /tmp/.emu.info
-		/usr/bin/$BINARY > /dev/null 2>&1 &
-	;;
-	stop)
-		echo "[SCRIPT] $1: $CAMNAME"
-		kill `pidof $BINARY`
-		remove_tmp
-	;;
-	restart)
-		$0 stop
-		sleep 2
-		$0 start
-		exit
-	;;
-	*)
-		$0 stop
-		exit 0
-	;;
+start)
+    ulimit -s 1024
+    start-stop-daemon -S -x /usr/bin/gbox > /dev/null 2>&1 -b
+    ;;
+stop)
+    exec start-stop-daemon -K -R 2 -x /usr/bin/gbox
+    ;;
+restart|reload)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+version)
+    echo "811k"
+    ;;
+info)
+    echo "gbox 811k"
+    ;;
+*)
+    echo "Usage: $0 start|stop|restart"
+    exit 1
+    ;;
 esac
-
 exit 0

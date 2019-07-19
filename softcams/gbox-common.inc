@@ -2,7 +2,7 @@
 SUMMARY_${PN} = "gbox.net ${PKGV}"
 DESCRIPTION_${PN} = "A binary only softcam"
 
-PR = "r4.1"
+PR = "r4.2"
 
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
@@ -44,9 +44,9 @@ CAM_ARCH_sh4="sh4"
 CAM_ARCH_mipsel="mips32el"
 
 do_install() {
-    install -d ${D}/etc/init.d
+    cp ${S}/../init.gbox ${S}/init.${CAMNAME}
+
     install -d ${D}/usr/bin
-    install -m 0755 ${S}/../init.gbox ${D}/etc/init.d/init.${CAMNAME}
     install -m 0755 ${WORKDIR}/gbox_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
     if [ "x${CAM_ARCH}" == "xarm" ]; then
         install -d ${D}/tmp
