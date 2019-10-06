@@ -44,6 +44,7 @@ do_configure_prepend() {
 	mkdir -p ${S}/../${CAMNAME} 2>/dev/null || true
 	cp ${F}/SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
 	[[ -e ${S}/../SoftCam.Key ]] && cp ${S}/../SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
+	[[ -e ${S}/../const.cw ]] && cp ${S}/../const.cw ${S}/../${CAMNAME}/const.cw
 	perl -i -pe 's:Schimmelreiter:oe-alliance:g' ${S}/webif/status/status.html
 }
 

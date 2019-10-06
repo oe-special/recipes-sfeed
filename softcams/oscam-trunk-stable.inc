@@ -1,4 +1,4 @@
-SRCREV = "11518"
+SRCREV = "11546"
 CAMNAME = "oscam-stable"
 SUMMARY_${PN} = "OSCam-stable ${PKGV}"
 DESCRIPTION_${PN} = "OSCam Open Source Softcam\n \
@@ -8,5 +8,3 @@ DESCRIPTION_${PN} = "OSCam Open Source Softcam\n \
 SRC_URI += " \
             file://sogno_unibox_dvbapi-11518_boxtype_sogno_version.patch \
 "
-
-PR = "r4.0"
