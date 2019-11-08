@@ -24,10 +24,11 @@ do_install() {
     install -m 0755 ${WORKDIR}/scam_${PV}_${TARGET_ARCH} ${D}/usr/bin/${CAMNAME}
 }
 
-RDEPENDS_${PN} = "libcrypto-compat-0.9.7 glibc softcam-support"
+RDEPENDS_${PN} += "libcrypto-compat-0.9.7 glibc softcam-support"
+#RRECOMMENDS_${PN} += "libcrypt1"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} = "already-stripped build-deps"
+INSANE_SKIP_${PN} = "already-stripped build-deps file-rdeps"
 
 RPROVIDES_${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
 RREPLACES_${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
