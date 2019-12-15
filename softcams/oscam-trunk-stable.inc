@@ -1,4 +1,4 @@
-SRCREV = "11546"
+SRCREV = "11570"
 CAMNAME = "oscam-stable"
 SUMMARY_${PN} = "OSCam-stable ${PKGV}"
 DESCRIPTION_${PN} = "OSCam Open Source Softcam\n \

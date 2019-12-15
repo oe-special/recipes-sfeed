@@ -11,6 +11,7 @@ SRC_URI="git://github.com/oe-alliance/oscam-smod.git;protocol=git"
 CAMNAME = "oscam-smod"
 
 EXTRA_OECMAKE += "\
+	-DWITH_NEUTRINO=1 \
 	-DHAVE_PCSC=0 \
 "
 
@@ -50,8 +51,8 @@ do_configure_prepend() {
 
 do_compile_prepend() {
 	# Shitquake fucks up git revision detection, patch it in
-	export GITREV=$(echo ${GITPKGV}) ; sed -i s#GIT_VERSION\ \"test\"#GIT_VERSION\ \"${GITREV}\"# ${S}/globals.h
-	export GITREVHASH=$(echo ${GITPKGV} | sed s#.*\+##) ; sed -i s#GIT_VERSION_HASH\ \"\"#GIT_VERSION_HASH\ \"${GITREVHASH}\"# ${S}/globals.h
+	export GITREV=$(echo ${GITPKGV}) ; sed -i s#CS_SMOD_VERSION\ \ *\"test\"#CS_SMOD_VERSION\ \"${GITREV}\"# ${S}/globals.h
+	export GITREVHASH=$(echo ${GITPKGV} | sed s#.*\+##) ; sed -i s#CS_SMOD_VERSION_HASH\ \ *\"\"#CS_SMOD_VERSION_HASH\ \"${GITREVHASH}\"# ${S}/globals.h
 
 	# As we build for a STB, set default for dvbapi to 1 and don't hide idle clients
 	perl -i -pe 's:(OFS\(dvbapi_enabled\)[ \t]*?,[ \t]*?)0\),:${1}1\),:g' ${S}/oscam-config-global.c
