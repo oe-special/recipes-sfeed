@@ -8,7 +8,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-ncam:"
 SRC_URI += " \
             file://NCAM-LICENSE \
             file://init.ncam \
-            file://${CAMNAME}/* \
+            file://${CAMNAME}/ \
 "
 
 LICENSE="GPLv3"
