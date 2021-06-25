@@ -6,7 +6,7 @@ DESCRIPTION_${PN} = "Combining the benefits of\n \
 - emu support \
 "
 
-SRC_URI="git://github.com/oe-alliance/oscam-smod.git;protocol=git"
+SRC_URI="git://github.com/jbleyel/oscam-smod.git;protocol=git"
 
 CAMNAME = "oscam-smod"
 

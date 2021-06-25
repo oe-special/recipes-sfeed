@@ -8,7 +8,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-oscam:"
 SRC_URI += " \
             file://OSCAM-LICENSE \
             file://init.oscam-generic \
-            file://${CAMNAME}/* \
+            file://${CAMNAME}/ \
 "
 
 LICENSE="GPLv3"

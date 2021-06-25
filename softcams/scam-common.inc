@@ -10,7 +10,7 @@ require conf/license/license-close.inc
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-scam:"
 
 SRC_URI = " \
-            file://scam_${PV}_* \
+            file://scam_versions/ \
 "
 
 require softcam.inc
@@ -21,7 +21,7 @@ PACKAGE_ARCH = "${DEFAULTTUNE}"
 
 do_install() {
     install -d ${D}/usr/bin
-    install -m 0755 ${WORKDIR}/scam_${PV}_${TARGET_ARCH} ${D}/usr/bin/${CAMNAME}
+    install -m 0755 ${WORKDIR}/scam_versions/scam_${PV}_${TARGET_ARCH} ${D}/usr/bin/${CAMNAME}
 }
 
 RDEPENDS_${PN} += "libcrypto-compat-0.9.7 glibc softcam-support"

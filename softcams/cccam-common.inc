@@ -10,7 +10,7 @@ require conf/license/license-close.inc
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-cccam:"
 
 SRC_URI = " \
-            file://CCcam_${PV}_* \
+            file://cccam_versions \
             file://CCcam.cfg \
             file://CCcam.xml \
 "
@@ -24,7 +24,7 @@ PACKAGE_ARCH = "${DEFAULTTUNE}"
 
 do_install() {
     install -d ${D}/usr/bin
-    install -m 0755 ${WORKDIR}/CCcam_${PV}_${TARGET_ARCH} ${D}/usr/bin/${CAMNAME}
+    install -m 0755 ${WORKDIR}/cccam_versions/CCcam_${PV}_${TARGET_ARCH} ${D}/usr/bin/${CAMNAME}
     install -d ${D}/etc
     install -m 0755 ${WORKDIR}/CCcam.cfg ${D}/etc/CCcam.cfg
     install -d ${D}/etc/ppanels

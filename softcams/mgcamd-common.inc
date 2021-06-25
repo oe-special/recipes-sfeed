@@ -10,7 +10,7 @@ require conf/license/license-close.inc
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-mgcamd:"
 
 SRC_URI = " \
-            file://mgcamd_${PV}_* \
+            file://mgcamd_versions/ \
             file://init.mgcamd \
 "
 
@@ -31,7 +31,7 @@ do_compile_prepend() {
 do_install() {
     cp ${S}/../init.mgcamd ${S}/init.mgcamd
     install -d ${D}/usr/bin
-    install -m 0755 ${S}/../mgcamd_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
+    install -m 0755 ${S}/../mgcamd_versions/mgcamd_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
 }
 
 pkg_postinst_${PN}_prepend () {

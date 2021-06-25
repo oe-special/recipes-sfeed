@@ -12,7 +12,7 @@ require softcam-binary-32bit.inc
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-gbox:"
 
 SRC_URI = " \
-            file://gbox_${PV}_* \
+            file://gbox_versions/ \
             file://init.gbox \
             \
             file://libnxp.so.arm \
@@ -47,7 +47,7 @@ do_install() {
     cp ${S}/../init.gbox ${S}/init.${CAMNAME}
 
     install -d ${D}/usr/bin
-    install -m 0755 ${WORKDIR}/gbox_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
+    install -m 0755 ${WORKDIR}/gbox_versions/gbox_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
     if [ "x${CAM_ARCH}" == "xarm" ]; then
         install -d ${D}/tmp
         install -m 0755 ${WORKDIR}/libnxp.so.arm ${D}/tmp/libnxp.so

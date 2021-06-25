@@ -10,7 +10,7 @@ require conf/license/license-close.inc
 FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-wicardd:"
 
 SRC_URI = " \
-            file://wicardd_${PV}_* \
+            file://wicardd_versions/ \
             file://wicardd.conf \
             file://init.${CAMNAME} \
 "
@@ -32,7 +32,7 @@ do_compile_prepend() {
 do_install() {
     install -d ${D}/usr/bin
     install -d ${D}/etc/tuxbox/config/${CAMNAME}
-    install -m 0755 ${WORKDIR}/wicardd_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
+    install -m 0755 ${WORKDIR}/wicardd_versions/wicardd_${PV}_${CAM_ARCH} ${D}/usr/bin/${CAMNAME}
     install -m 0755 ${WORKDIR}/wicardd.conf ${D}/etc/tuxbox/config/${CAMNAME}/wicardd.conf
 }
 
