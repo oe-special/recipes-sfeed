@@ -3,7 +3,7 @@
 require softcam.inc
 inherit cmake
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-ncam:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/enigma2-plugin-softcams-ncam:"
 
 SRC_URI += " \
             file://NCAM-LICENSE \
@@ -14,7 +14,7 @@ SRC_URI += " \
 LICENSE="GPLv3"
 LIC_FILES_CHKSUM = "file://../NCAM-LICENSE;md5=d32239bcb673463ab874e80d47fae504"
 
-CONFFILES_${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
+CONFFILES:${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
 
@@ -31,7 +31,7 @@ EXTRA_OECMAKE += "\
 	-DSTATIC_LIBUSB=0 \
 "
 
-do_configure_prepend () {
+do_configure:prepend () {
 	cp ${S}/../init.ncam ${S}/init.${CAMNAME}
 }
 

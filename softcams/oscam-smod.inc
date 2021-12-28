@@ -1,6 +1,6 @@
 MAINTAINER = "smod"
-SUMMARY_${PN} = "OSCam-smod ${PKGV}"
-DESCRIPTION_${PN} = "Combining the benefits of\n \
+SUMMARY:${PN} = "OSCam-smod ${PKGV}"
+DESCRIPTION:${PN} = "Combining the benefits of\n \
 - latest trunk\n \
 - modern interface\n \
 - emu support \
@@ -30,9 +30,9 @@ PR = "r0"
 S = "${WORKDIR}/git"
 F = "${WORKDIR}/git/files"
 
-RPROVIDES_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
-RREPLACES_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
-RCONFLICTS_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+RPROVIDES:${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+RREPLACES:${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+RCONFLICTS:${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
 
 
 python do_get_smodsvn () {
@@ -41,7 +41,7 @@ python do_get_smodsvn () {
     d.setVar('SMODSVN',f.readline())
 }
 
-do_configure_prepend() {
+do_configure:prepend() {
 	mkdir -p ${S}/../${CAMNAME} 2>/dev/null || true
 	cp ${F}/SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
 	[[ -e ${S}/../SoftCam.Key ]] && cp ${S}/../SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
@@ -49,7 +49,7 @@ do_configure_prepend() {
 	perl -i -pe 's:Schimmelreiter:oe-alliance:g' ${S}/webif/status/status.html
 }
 
-do_compile_prepend() {
+do_compile:prepend() {
 	# Shitquake fucks up git revision detection, patch it in
 	export GITREV=$(echo ${GITPKGV}) ; sed -i s#CS_SMOD_VERSION\ \ *\"test\"#CS_SMOD_VERSION\ \"${GITREV}\"# ${S}/globals.h
 	export GITREVHASH=$(echo ${GITPKGV} | sed s#.*\+##) ; sed -i s#CS_SMOD_VERSION_HASH\ \ *\"\"#CS_SMOD_VERSION_HASH\ \"${GITREVHASH}\"# ${S}/globals.h

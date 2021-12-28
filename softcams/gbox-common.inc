@@ -9,7 +9,7 @@ require conf/license/license-close.inc
 require softcam.inc
 require softcam-binary-32bit.inc
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-gbox:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/enigma2-plugin-softcams-gbox:"
 
 SRC_URI = " \
             file://gbox_versions/ \
@@ -35,13 +35,13 @@ SRC_URI = " \
             file://via \
 "
 
-FILES_${PN} += "/var/keys /tmp"
-CONFFILES_${PN} = "/var/keys"
+FILES:${PN} += "/var/keys /tmp"
+CONFFILES:${PN} = "/var/keys"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
 CAM_ARCH="arm"
-CAM_ARCH_sh4="sh4"
-CAM_ARCH_mipsel="mips32el"
+CAM_ARCH:sh4="sh4"
+CAM_ARCH:mipsel="mips32el"
 
 do_install() {
     cp ${S}/../init.gbox ${S}/init.${CAMNAME}
@@ -60,7 +60,7 @@ do_install() {
 
 }
 
-pkg_postinst_${PN}_prepend () {
+pkg_postinst:${PN}:prepend () {
 	if [ -e "$D/tmp/libnxp.so" ] && [ ! -e "$D/lib/libnxp.so" ] && [ ! -e "$D/usr/lib/libnxp.so" ]; then
 		mv $D/tmp/libnxp.so $D/usr/lib/libnxp.so 2>/dev/null
 	fi
@@ -69,8 +69,8 @@ pkg_postinst_${PN}_prepend () {
 	fi
 }
 
-RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libgcc softcam-support"
+RDEPENDS:${PN}_aarch64 = "lib32-glibc lib32-libgcc softcam-support"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} += "already-stripped ldflags"
-INSANE_SKIP_${PN}_aarch64 += "already-stripped arch ldflags"
+INSANE_SKIP:${PN} += "already-stripped ldflags"
+INSANE_SKIP:${PN}_aarch64 += "already-stripped arch ldflags"

@@ -1,6 +1,6 @@
 CAMNAME="mgcamd"
 
 require mgcamd-common.inc
-SUMMARY_${PN}_append = " (Long ECM patched)"
-DESCRIPTION_${PN}_append = "\n \
+SUMMARY:${PN}:append = " (Long ECM patched)"
+DESCRIPTION:${PN}:append = "\n \
 - with patch for long ECM"

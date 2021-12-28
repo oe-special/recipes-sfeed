@@ -1,6 +1,6 @@
 MAINTAINER = "OpenVisionE2 team"
-SUMMARY_${PN} = "NCam ${PKGV}"
-DESCRIPTION_${PN} = "NCam Open Source Softcam\n \
+SUMMARY:${PN} = "NCam ${PKGV}"
+DESCRIPTION:${PN} = "NCam Open Source Softcam\n \
 - latest git revision"
 
 #SRC_URI="git://github.com/oe-special/NCam.git;protocol=git"

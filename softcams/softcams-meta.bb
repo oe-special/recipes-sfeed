@@ -33,10 +33,14 @@ SOFTCAMS = "\
         ${@bb.utils.contains("TARGET_ARCH", "mipsel", "enigma2-plugin-softcams-scam", "", d)} \
 "
 
-SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-gbox"
-SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-mgcamd"
-SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-wicardd"
-SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-cccam"
+SOFTCAMS:remove:cortexa9hf-neon = "enigma2-plugin-softcams-gbox"
+SOFTCAMS:remove:cortexa9hf-neon = "enigma2-plugin-softcams-mgcamd"
+SOFTCAMS:remove:cortexa9hf-neon = "enigma2-plugin-softcams-wicardd"
+SOFTCAMS:remove:cortexa9hf-neon = "enigma2-plugin-softcams-cccam"
+SOFTCAMS:remove:cortexa7hf-vfp = "enigma2-plugin-softcams-gbox"
+SOFTCAMS:remove:cortexa7hf-vfp = "enigma2-plugin-softcams-mgcamd"
+SOFTCAMS:remove:cortexa7hf-vfp = "enigma2-plugin-softcams-wicardd"
+SOFTCAMS:remove:cortexa7hf-vfp = "enigma2-plugin-softcams-cccam"
 
 DEPENDS += "\
 	${SOFTCAMS} \

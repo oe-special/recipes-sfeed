@@ -7,7 +7,7 @@ PR = "r0"
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-scam:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/enigma2-plugin-softcams-scam:"
 
 SRC_URI = " \
             file://scam_versions/ \
@@ -15,7 +15,7 @@ SRC_URI = " \
 
 require softcam.inc
 
-#CONFFILES_${PN} ?= "/etc/CCcam.cfg /etc/ppanels/CCcam.xml"
+#CONFFILES:${PN} ?= "/etc/CCcam.cfg /etc/ppanels/CCcam.xml"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
 
@@ -28,8 +28,8 @@ RDEPENDS_${PN} += "libcrypto-compat-0.9.7 glibc softcam-support"
 #RRECOMMENDS_${PN} += "libcrypt1"
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} = "already-stripped build-deps file-rdeps"
+INSANE_SKIP:${PN} = "already-stripped build-deps file-rdeps"
 
-RPROVIDES_${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
-RREPLACES_${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
-RCONFLICTS_${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
+RPROVIDES:${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
+RREPLACES:${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"
+RCONFLICTS:${PN} += "enigma2-plugin-softcams-scam-3.60 enigma2-plugin-softcams-scam-3.59"

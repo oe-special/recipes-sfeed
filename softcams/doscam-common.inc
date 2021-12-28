@@ -7,9 +7,9 @@ PR = "r1"
 
 require softcam.inc
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-doscam:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/enigma2-plugin-softcams-doscam:"
 
-RDEPENDS_${PN} += "libusb1"
+RDEPENDS:${PN} += "libusb1"
 
 SRC_URI = " \
             file://doscam_versions/ \
@@ -18,11 +18,11 @@ SRC_URI = " \
 "
 INHIBIT_PACKAGE_STRIP = "1"
 
-CONFFILES_${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
+CONFFILES:${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
 
 PACKAGE_ARCH = "${DEFAULTTUNE}"
 
-do_configure_prepend () {
+do_configure:prepend () {
         cp ${WORKDIR}/init.doscam ${S}/init.${CAMNAME}
 }
 

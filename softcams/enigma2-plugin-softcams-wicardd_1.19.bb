@@ -2,4 +2,4 @@ CAMNAME="wicardd"
 
 require wicardd-common.inc
 
-SUMMARY_${PN}_append = " (beelive)"
+SUMMARY:${PN}:append = " (beelive)"
