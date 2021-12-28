@@ -37,6 +37,10 @@ SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-gbox"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-mgcamd"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-wicardd"
 SOFTCAMS_remove_cortexa9hf-neon = "enigma2-plugin-softcams-cccam"
+SOFTCAMS_remove_cortexa7hf-vfp = "enigma2-plugin-softcams-gbox"
+SOFTCAMS_remove_cortexa7hf-vfp = "enigma2-plugin-softcams-mgcamd"
+SOFTCAMS_remove_cortexa7hf-vfp = "enigma2-plugin-softcams-wicardd"
+SOFTCAMS_remove_cortexa7hf-vfp = "enigma2-plugin-softcams-cccam"
 
 DEPENDS += "\
 	${SOFTCAMS} \
