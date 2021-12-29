@@ -38,7 +38,6 @@ SRC_URI = " \
 FILES:${PN} += "/var/keys /tmp"
 CONFFILES:${PN} = "/var/keys"
 
-PACKAGE_ARCH = "${DEFAULTTUNE}"
 CAM_ARCH="arm"
 CAM_ARCH:sh4="sh4"
 CAM_ARCH:mipsel="mips32el"

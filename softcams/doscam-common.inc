@@ -23,8 +23,6 @@ deltask do_populate_sysroot
 
 CONFFILES:${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
 
-PACKAGE_ARCH = "${DEFAULTTUNE}"
-
 do_configure:prepend () {
         cp ${WORKDIR}/init.doscam ${S}/init.${CAMNAME}
 }

@@ -17,8 +17,6 @@ require softcam.inc
 
 #CONFFILES:${PN} ?= "/etc/CCcam.cfg /etc/ppanels/CCcam.xml"
 
-PACKAGE_ARCH = "${DEFAULTTUNE}"
-
 do_install() {
     install -d ${D}/usr/bin
     install -m 0755 ${WORKDIR}/scam_versions/scam_${PV}_${TARGET_ARCH} ${D}/usr/bin/${CAMNAME}

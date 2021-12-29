@@ -20,7 +20,6 @@ require softcam-binary-32bit.inc
 
 CONFFILES:${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
 
-PACKAGE_ARCH = "${DEFAULTTUNE}"
 CAM_ARCH="arm"
 CAM_ARCH:mipsel="mipsel"
 CAM_ARCH:sh4="sh4"

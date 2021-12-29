@@ -46,7 +46,6 @@ SOFTCAMS:remove:cortexa7hf = "enigma2-plugin-softcams-mgcamd"
 SOFTCAMS:remove:cortexa7hf = "enigma2-plugin-softcams-wicardd"
 SOFTCAMS:remove:cortexa7hf = "enigma2-plugin-softcams-cccam"
 
-
 DEPENDS += "\
 	${SOFTCAMS} \
 "

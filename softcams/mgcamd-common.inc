@@ -19,7 +19,6 @@ require softcam-binary-32bit.inc
 
 #CONFFILES:${PN} ?= "/etc/CCcam.cfg"
 
-PACKAGE_ARCH = "${DEFAULTTUNE}"
 CAM_ARCH="arm"
 CAM_ARCH:mipsel="mips32el"
 CAM_ARCH:sh4="sh4"
