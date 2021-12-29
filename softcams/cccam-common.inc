@@ -30,7 +30,7 @@ do_install() {
 }
 
 RDEPENDS:${PN} = "glibc libstdc++ softcam-support"
-RDEPENDS:${PN}_aarch64 = "lib32-glibc lib32-libstdc++ softcam-support"
+RDEPENDS:${PN}:aarch64 = "lib32-glibc lib32-libstdc++ softcam-support"
 
 # libxcrypt
 
@@ -39,7 +39,7 @@ INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 deltask do_populate_sysroot
 INSANE_SKIP:${PN} = "already-stripped build-deps file-rdeps"
-INSANE_SKIP:${PN}_aarch64 = "already-stripped arch build-deps file-rdeps"
+INSANE_SKIP:${PN}:aarch64 = "already-stripped arch build-deps file-rdeps"
 
 RPROVIDES:${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"
 RREPLACES:${PN} += "enigma2-plugin-softcams-cccam-2.0.9 enigma2-plugin-softcams-cccam-2.0.11 enigma2-plugin-softcams-cccam-2.1.1 enigma2-plugin-softcams-cccam-2.2.1 enigma2-plugin-softcams-cccam-2.3.0 enigma2-plugin-softcams-cccam-2.3.2"

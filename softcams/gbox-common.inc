@@ -68,11 +68,11 @@ pkg_postinst:${PN}:prepend () {
 	fi
 }
 
-RDEPENDS:${PN}_aarch64 = "lib32-glibc lib32-libgcc softcam-support"
+RDEPENDS:${PN}:aarch64 = "lib32-glibc lib32-libgcc softcam-support"
 
 do_prepare_recipe_sysroot[noexec] = "1"
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 deltask do_populate_sysroot
 INSANE_SKIP:${PN} += "already-stripped ldflags"
-INSANE_SKIP:${PN}_aarch64 += "already-stripped arch ldflags"
+INSANE_SKIP:${PN}:aarch64 += "already-stripped arch ldflags"

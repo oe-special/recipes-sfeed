@@ -39,7 +39,7 @@ pkg_postinst:${PN}:prepend () {
 	fi
 }
 
-RDEPENDS:${PN}_aarch64 = "lib32-glibc lib32-libxcrypt lib32-libcrypto1.0.0 lib32-libgcc lib32-zlib softcam-support"
+RDEPENDS:${PN}:aarch64 = "lib32-glibc lib32-libxcrypt lib32-libcrypto1.0.0 lib32-libgcc lib32-zlib softcam-support"
 
 do_prepare_recipe_sysroot[noexec] = "1"
 INHIBIT_PACKAGE_STRIP = "1"
