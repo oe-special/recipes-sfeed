@@ -42,6 +42,8 @@ pkg_postinst:${PN}:prepend () {
 
 RDEPENDS:${PN}_aarch64 = "lib32-glibc lib32-libxcrypt lib32-libcrypto1.0.0 lib32-libgcc lib32-zlib softcam-support"
 
+do_prepare_recipe_sysroot[noexec] = "1"
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+deltask do_populate_sysroot
 INSANE_SKIP:${PN} += "already-stripped arch build-deps ldflags file-rdeps"

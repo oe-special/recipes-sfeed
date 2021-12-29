@@ -36,7 +36,10 @@ RDEPENDS:${PN}_aarch64 = "lib32-glibc lib32-libstdc++ softcam-support"
 
 # libxcrypt
 
+do_prepare_recipe_sysroot[noexec] = "1"
 INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+deltask do_populate_sysroot
 INSANE_SKIP:${PN} = "already-stripped build-deps file-rdeps"
 INSANE_SKIP:${PN}_aarch64 = "already-stripped arch build-deps file-rdeps"
 
