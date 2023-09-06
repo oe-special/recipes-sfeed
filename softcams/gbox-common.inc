@@ -1,15 +1,4 @@
-# Stuff applying to all gbox on image
-SUMMARY_${PN} = "gbox.net ${PKGV}"
-DESCRIPTION_${PN} = "A binary only softcam"
-
 PR = "r4.2"
-
-LICENSE = "CLOSED"
-require conf/license/license-close.inc
-require softcam.inc
-require softcam-binary-32bit.inc
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-gbox:"
 
 SRC_URI = " \
             file://gbox_versions/ \
@@ -35,14 +24,6 @@ SRC_URI = " \
             file://via \
 "
 
-FILES_${PN} += "/var/keys /tmp"
-CONFFILES_${PN} = "/var/keys"
-
-PACKAGE_ARCH = "${DEFAULTTUNE}"
-CAM_ARCH="arm"
-CAM_ARCH_sh4="sh4"
-CAM_ARCH_mipsel="mips32el"
-
 do_install() {
     cp ${S}/../init.gbox ${S}/init.${CAMNAME}
 
@@ -60,20 +41,6 @@ do_install() {
 
 }
 
-pkg_postinst_${PN}_prepend () {
-	if [ -e "$D/tmp/libnxp.so" ] && [ ! -e "$D/lib/libnxp.so" ] && [ ! -e "$D/usr/lib/libnxp.so" ]; then
-		mv $D/tmp/libnxp.so $D/usr/lib/libnxp.so 2>/dev/null
-	fi
-	if [ ! -e "$D/lib/ld-linux.so.3" ] && [ -e "$D/lib/ld-linux-armhf.so.3" ]; then
-		ln -s ld-linux-armhf.so.3 $D/lib/ld-linux.so.3
-	fi
-}
-
-RDEPENDS_${PN}_aarch64 = "lib32-glibc lib32-libgcc softcam-support"
-
-do_prepare_recipe_sysroot[noexec] = "1"
-INHIBIT_PACKAGE_STRIP = "1"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-deltask do_populate_sysroot
-INSANE_SKIP_${PN} += "already-stripped ldflags"
-INSANE_SKIP_${PN}_aarch64 += "already-stripped arch ldflags"
+require softcam-binary.inc
+require ${SOFTCAM_INCLUDES}/gbox-common.inc
+require softcam.inc

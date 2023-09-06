@@ -1,21 +1,5 @@
 MAINTAINER = "smod"
-SUMMARY_${PN} = "OSCam-smod ${PKGV}"
-DESCRIPTION_${PN} = "Combining the benefits of\n \
-- latest trunk\n \
-- modern interface\n \
-- emu support \
-"
-
-SRC_URI="git://github.com/jbleyel/oscam-smod.git;protocol=git"
-
 CAMNAME = "oscam-smod"
-
-EXTRA_OECMAKE += "\
-	-DWITH_NEUTRINO=1 \
-	-DHAVE_PCSC=0 \
-"
-
-require oscam-common.inc
 
 inherit gitpkgv
 
@@ -30,36 +14,32 @@ PR = "r0"
 S = "${WORKDIR}/git"
 F = "${WORKDIR}/git/files"
 
-RPROVIDES_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
-RREPLACES_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
-RCONFLICTS_${PN} += "enigma2-plugin-softcams-oscam-ymod enigma2-plugin-softcams-oscam-atv-ymod enigma2-plugin-softcams-oscam-ymod-openatv"
+SRC_URI="git://github.com/Schimmelreiter/oscam-smod.git;protocol=https;branch=master"
 
+require oscam-common.inc
+
+require ${SOFTCAM_INCLUDES}/oscam-smod.inc
+
+EXTRA_OECMAKE += "\
+	-DWITH_NEUTRINO=1 \
+	-DHAVE_PCSC=0 \
+        -DCS_ANTICASC=1 \
+        -DCS_CACHEEX=1 \
+        -DCS_CACHEEX_AIO=1 \
+        -DCW_CYCLE_CHECK=1 \
+        -DCARDREADER_MP35=1 \
+        -DCARDREADER_SC8IN1=1 \
+        -DCARDREADER_SMARGO=1 \
+        -DMODULE_SERIAL=1 \
+        -DMODULE_CONSTCW=1 \
+        -DMODULE_PANDORA=1 \
+        -DMODULE_GHTTP=1 \
+"
 
 python do_get_smodsvn () {
     src = d.getVar('S')
     f = open(src + "/.trunk-svn", "r")
     d.setVar('SMODSVN',f.readline())
-}
-
-do_configure_prepend() {
-	mkdir -p ${S}/../${CAMNAME} 2>/dev/null || true
-	cp ${F}/SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
-	[[ -e ${S}/../SoftCam.Key ]] && cp ${S}/../SoftCam.Key ${S}/../${CAMNAME}/SoftCam.Key
-	[[ -e ${S}/../const.cw ]] && cp ${S}/../const.cw ${S}/../${CAMNAME}/const.cw
-	perl -i -pe 's:Schimmelreiter:oe-alliance:g' ${S}/webif/status/status.html
-}
-
-do_compile_prepend() {
-	# Shitquake fucks up git revision detection, patch it in
-	export GITREV=$(echo ${GITPKGV}) ; sed -i s#CS_SMOD_VERSION\ \ *\"test\"#CS_SMOD_VERSION\ \"${GITREV}\"# ${S}/globals.h
-	export GITREVHASH=$(echo ${GITPKGV} | sed s#.*\+##) ; sed -i s#CS_SMOD_VERSION_HASH\ \ *\"\"#CS_SMOD_VERSION_HASH\ \"${GITREVHASH}\"# ${S}/globals.h
-
-	# As we build for a STB, set default for dvbapi to 1 and don't hide idle clients
-	perl -i -pe 's:(OFS\(dvbapi_enabled\)[ \t]*?,[ \t]*?)0\),:${1}1\),:g' ${S}/oscam-config-global.c
-	perl -i -pe 's:(OFS\(dvbapi_read_sdt\)[ \t]*?,[ \t]*?)0\),:${1}1\),:g' ${S}/oscam-config-global.c
-	perl -i -pe 's:(OFS\(http_hide_idle_clients\)[ \t]*?,[ \t]*?)1\),:${1}0\),:g' ${S}/oscam-config-global.c
-
-	#LDFLAGS="${LDFLAGS} -Wl,--format=binary -Wl,SoftCam.Key -Wl,--format=default"
 }
 
 #addtask get_smodsvn after do_unpack before do_patch

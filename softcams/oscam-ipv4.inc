@@ -1,12 +1,6 @@
+require ${SOFTCAM_INCLUDES}/oscam-ipv4.inc
+
 EXTRA_OECMAKE += "\
 	-DIPV6SUPPORT=0 \
 	"
 
-SUMMARY_${PN}_append = " (IPv4 only)"
-
-DESCRIPTION_${PN} += "\n \
-Note: You should never need this IPv4-ONLY version!"
-
-RPROVIDES_${PN}  += "${CAMNAME}-ipv4"
-RREPLACES_${PN}  += "${CAMNAME}"
-RCONFLICTS_${PN} += "${CAMNAME}"

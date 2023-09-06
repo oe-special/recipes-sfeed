@@ -1,3 +1,9 @@
+CAM_ARCH="${DEFAULTTUNE}"
+CAM_ARCH_sh4="sh4"
+CAM_ARCH_mipsel="mips32el"
+
+INSANE_SKIP_${PN} += "already-stripped arch build-deps ldflags file-rdeps"
+
 # Learned from CCcam
 ASSUME_SHLIBS_aarch64 += "libc.so.6:lib32-glibc"
 ASSUME_SHLIBS_aarch64 += "libpthread.so.0:lib32-glibc"

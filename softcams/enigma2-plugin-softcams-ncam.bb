@@ -1,2 +1,2 @@
-include ncam.inc
-include oscam-ipv6.inc
+require ncam.inc
+require oscam-ipv6.inc

@@ -1,2 +1,2 @@
-include oscam-emu.inc
-include oscam-ipv6.inc
+require ./oscam-emu.inc
+require ./oscam-ipv6.inc

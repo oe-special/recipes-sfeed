@@ -1,3 +1,3 @@
-include oscam-trunk.inc
-include oscam-trunk-stable.inc
-include oscam-ipv6.inc
+require ./oscam-trunk-stable.inc
+require ./oscam-trunk.inc
+require ./oscam-ipv6.inc

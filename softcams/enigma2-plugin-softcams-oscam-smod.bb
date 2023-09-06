@@ -1,2 +1,2 @@
-include oscam-smod.inc
-include oscam-ipv6.inc
+require ./oscam-smod.inc
+require ./oscam-ipv6.inc

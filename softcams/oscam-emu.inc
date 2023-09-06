@@ -1,17 +1,5 @@
 MAINTAINER = "oscam-emu"
-SUMMARY_${PN} = "OSCam-emu ${PKGV}"
-DESCRIPTION_${PN} = "OSCam Open Source Softcam\n \
-- with emu support"
-
-SRC_URI="git://github.com/oscam-emu/oscam-patched.git;protocol=git"
-
 CAMNAME = "oscam-emu"
-
-EXTRA_OECMAKE += "\
-	-DHAVE_PCSC=0 \
-"
-
-require oscam-common.inc
 
 inherit gitpkgv
 
@@ -23,6 +11,13 @@ PKGV = "1.20+git${GITPKGV}"
 
 S = "${WORKDIR}/git"
 
-RPROVIDES_${PN} += "enigma2-plugin-softcams-oscam-atv-emu"
-RREPLACES_${PN} += "enigma2-plugin-softcams-oscam-atv-emu"
-RCONFLICTS_${PN} += "enigma2-plugin-softcams-oscam-atv-emu"
+SRC_URI="git://github.com/oscam-emu/oscam-patched.git;protocol=https;branch=master"
+
+require oscam-common.inc
+
+EXTRA_OECMAKE += "\
+	-DHAVE_PCSC=0 \
+"
+
+require ${SOFTCAM_INCLUDES}/oscam-emu.inc
+

@@ -1,9 +1,6 @@
-# Stuff applying to all oscams on image
+require ${SOFTCAM_INCLUDES}/oscam-common.inc
 
-require softcam.inc
 inherit cmake
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/enigma2-plugin-softcams-oscam:"
 
 SRC_URI += " \
             file://OSCAM-LICENSE \
@@ -13,10 +10,6 @@ SRC_URI += " \
 
 LICENSE="GPLv3"
 LIC_FILES_CHKSUM = "file://../OSCAM-LICENSE;md5=d32239bcb673463ab874e80d47fae504"
-
-CONFFILES_${PN} ?= "/etc/tuxbox/config/${CAMNAME}"
-
-PACKAGE_ARCH = "${DEFAULTTUNE}"
 
 DEPENDS += "libusb openssl"
 
@@ -33,11 +26,6 @@ EXTRA_OECMAKE += "\
 	-DSTATIC_LIBUSB=0 \
 "
 
-do_configure_prepend () {
-	cp ${S}/../init.oscam-generic ${S}/init.${CAMNAME}
-	perl -i -pe 's:DEFAULT_HTTP_PORT[ \t]*?8888:DEFAULT_HTTP_PORT 83:g' ${S}/oscam-config-global.c
-}
-
 do_install () {
 	install -d ${D}/${bindir}
 	install -m 0755 ${WORKDIR}/build/oscam ${D}/usr/bin/${CAMNAME}
@@ -46,6 +34,5 @@ do_install () {
 	[[ -e ${D}/${sysconfdir}/tuxbox/config/${CAMNAME}/Sample.configs ]] && rm ${D}/${sysconfdir}/tuxbox/config/${CAMNAME}/Sample.configs 2>/dev/null || true
 }
 
-do_rmwork () {
-	:
-}
+require softcam.inc
+
