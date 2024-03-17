@@ -15,8 +15,6 @@ SOFTCAMS = "\
 	enigma2-plugin-softcams-oscam-trunk-ipv4only \
 	enigma2-plugin-softcams-oscam-stable \
 	enigma2-plugin-softcams-oscam-stable-ipv4only \
-	enigma2-plugin-softcams-oscam-icam \
-	enigma2-plugin-softcams-oscam-icam-ipv4only \
 	enigma2-plugin-softcams-ncam \
 	enigma2-plugin-softcams-ncam-ipv4only \
 	${@bb.utils.contains("DEFAULTTUNE", "sh4", " ${SOFTCAM_BINARY}" , "", d)} \
